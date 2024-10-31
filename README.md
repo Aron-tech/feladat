@@ -1,3 +1,2 @@
 Many to Many kapcsolatot azért csináltam, mert a contacts tábla kislistázásából való választás is beleakartam tenni, viszont végül mégse úgy csináltam meg mert elfogyott az idő.
-Az idő korláton kívül elkészített változat a javított branch-ben elérhető. + 15 perc volt a validációval gondba voltam, így az kimaradt.
-Illetve a contactok frissítését a projekt űrlapon még nincs benne, mert csak új contactot hoz létre
+Hogy egy kapcsolattartó tartozhasson több projekthez és egy projekthez is tartozhasson több kapcsolattartó, viszont a kapcsolattartó információi ne duplikálodjanak, próbáltam megvalósítani, de így a update funkció bonyolultá vált és mivel fogyóba volt az időm ezért gyorsan megoldottam egy törlés és újralétrehozás funkcióval (Felesleges a many many kapcsolat)
