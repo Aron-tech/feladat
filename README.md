@@ -1,1 +1,1 @@
-Apróbb változtatásokat amikre nem jutott időm 2024.11.03 feltöltöttem a dev branchbe.
+Developer branchbe azokat a változtatásokat raktam bele, amiket nem tudtam elkészíteni a 3 óra alatt és utána módosítottam őket.
