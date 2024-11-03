@@ -3,7 +3,7 @@
     <div class="mb-4">
         <div >
             <x-input-label>Szűrés</x-input-label>
-            <select wire:change='filterProjects($event.target.value)' class="py-2 bg-gray-800 disabled:text-white text-white rounded-md" name="status">
+            <select wire:change='filterProjects($event.target.value)' class="py-2 px-5 bg-gray-800 disabled:text-white text-white rounded-md" name="status">
                 <option selected value="all">Összes projekt</option>
                 <option value="fejlesztésre vár">Fejlesztésre vár</option>
                 <option value="folyamatban">Folyamatban</option>
