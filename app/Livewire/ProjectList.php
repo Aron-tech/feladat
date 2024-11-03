@@ -36,6 +36,8 @@ class ProjectList extends Component
         $project->delete();
 
         $this->projects = $this->loadProjects();
+
+        session()->flash('success', 'A projekt sikeresen törölve.');
     }
 
     public function render()

@@ -62,12 +62,13 @@ class ContactManager extends Component
 
     public function deleteContact($index, $id = null)
     {
-        unset($this->contacts[$index]);
-        $this->contacts = array_values($this->contacts);
-
-        if (isset($id) && isset($this->project->id)) {
-            $project = Project::findOrFail($this->project->id);
-            $project->contacts()->detach($id);
+        if(sizeof($this->contacts) <= 1) {
+            return session()->flash('error', 'Sikertelen törlés, minimum egy kapcsolattartót megkell adni.');
+        }else {
+            if (isset($id) && isset($this->project->id)) {
+                $project = Project::findOrFail($this->project->id);
+                $project->contacts()->detach($id);
+            }
         }
     }
     public function render()

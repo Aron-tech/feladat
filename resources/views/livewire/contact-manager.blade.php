@@ -1,3 +1,5 @@
+
+<x-success-error-box/>
 <div class="pt-2 space-y-2">
     <x-input-label>Kapcsolattartók</x-input-label>
     <select class="py-2 bg-gray-500 disabled:text-black text-black rounded-md" name="selectContact" wire:change='selectContact($event.target.value)'>
