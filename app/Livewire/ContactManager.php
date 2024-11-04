@@ -52,7 +52,7 @@ class ContactManager extends Component
              $ids[] = $act_contact['id'];
         }
 
-        return Contact::whereNotIn('id', $ids)->get();
+        return Contact::whereNotIn('id', $ids)->orderBy('name')->get();
     }
     public function addContact()
     {
@@ -78,16 +78,15 @@ class ContactManager extends Component
     {
         if(sizeof($this->contacts) <= 1) {
             return session()->flash('error', 'Sikertelen törlés, minimum egy kapcsolattartót megkell adni.');
-        }else {
-
-            unset($this->contacts[$index]);
-            $this->contacts = array_values($this->contacts);
-
-            if (isset($id) && isset($this->project->id)) {
-                $project = Project::findOrFail($this->project->id);
-                $project->contacts()->detach($id);
-            }
         }
+        unset($this->contacts[$index]);
+        $this->contacts = array_values($this->contacts);
+
+        if (isset($id) && isset($this->project->id)) {
+            $project = Project::findOrFail($this->project->id);
+            $project->contacts()->detach($id);
+        }
+        session()->flash('success', 'Sikeres törlés.');
 
         $this->all_contact = $this->loadContacts();
     }
