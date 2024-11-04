@@ -61,7 +61,7 @@ class ContactManager extends Component
 
     public function updateContact($id, $index)
     {
-        $this->validate([
+        $contacts = $this->validate([
             'contacts.'. $index . '.name' => 'required|string|max:255',
             'contacts.' . $index . '.email' => 'email|unique:contacts,email,' . $id,
         ]);
@@ -71,7 +71,6 @@ class ContactManager extends Component
             'email' => $this->contacts[$index]['email'],
         ]);
 
-        $this->all_contact = $this->loadContacts();
     }
 
     public function deleteContact($index, $id = null)
