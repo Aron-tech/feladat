@@ -25,6 +25,7 @@ class ContactManager extends Component
                 ];
             })->toArray();
         }
+
         $this->all_contact = $this->loadContacts();
     }
 
@@ -36,10 +37,19 @@ class ContactManager extends Component
             'email' => $contact->email,
         ];
 
+        $this->all_contact = $this->loadContacts();
+
     }
 
     public function loadContacts(){
-        return Contact::get();
+
+        $ids=[];
+
+        foreach($this->contacts as $act_contact){
+             $ids[] = $act_contact['id'];
+        }
+
+        return Contact::whereNotIn('id', $ids)->get();
     }
     public function addContact()
     {
@@ -57,6 +67,7 @@ class ContactManager extends Component
             'name' => $this->contacts[$index]['name'],
             'email' => $this->contacts[$index]['email'],
         ]);
+
         $this->all_contact = $this->loadContacts();
     }
 
@@ -65,11 +76,17 @@ class ContactManager extends Component
         if(sizeof($this->contacts) <= 1) {
             return session()->flash('error', 'Sikertelen törlés, minimum egy kapcsolattartót megkell adni.');
         }else {
+
+            unset($this->contacts[$index]);
+            $this->contacts = array_values($this->contacts);
+
             if (isset($id) && isset($this->project->id)) {
                 $project = Project::findOrFail($this->project->id);
                 $project->contacts()->detach($id);
             }
         }
+
+        $this->all_contact = $this->loadContacts();
     }
     public function render()
     {
