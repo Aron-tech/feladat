@@ -20,7 +20,7 @@
                 <p class="text-xs text-gray-400">Kapcsolattartók száma: {{ $project->contactsCount() }}</p>
                 <div>
                     <a href="{{ route('projects.edit', $project->id) }}" class="rounded px-2 py-1 bg-blue-600 text-white">Szerkesztés</a>
-                    <button wire:click="delete({{ $project->id }})" class= "rounded px-2 py-1 bg-red-600 text-white">Törlés</button>
+                    <button wire:click="delete({{ $project->id }})" wire:loading.attr='disabled' class= "rounded px-2 py-1 bg-red-600 text-white">Törlés</button>
                 </div>
             </div>
         @endforeach

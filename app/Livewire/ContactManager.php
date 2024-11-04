@@ -61,7 +61,7 @@ class ContactManager extends Component
 
     public function updateContact($id, $index)
     {
-        $contacts = $this->validate([
+        $this->validate([
             'contacts.'. $index . '.name' => 'required|string|max:255',
             'contacts.' . $index . '.email' => 'email|unique:contacts,email,' . $id,
         ]);
@@ -84,10 +84,10 @@ class ContactManager extends Component
         if (isset($id) && isset($this->project->id)) {
             $project = Project::findOrFail($this->project->id);
             $project->contacts()->detach($id);
-        }
-        session()->flash('success', 'Sikeres törlés.');
 
-        $this->all_contact = $this->loadContacts();
+            $this->all_contact = $this->loadContacts();
+        }
+        session()->flash('success', 'Sikeres törlés.'); 
     }
     public function render()
     {

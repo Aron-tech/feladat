@@ -29,8 +29,9 @@ class ProjectList extends Component
 
     }
 
-    public function delete($id)
+    public function delete($id = null)
     {
+
         $project = Project::findOrFail($id);
 
         $project->delete();
