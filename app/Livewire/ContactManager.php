@@ -11,6 +11,7 @@ class ContactManager extends Component
     public $contacts = [];
     public $project;
     public $all_contact = [];
+    public $default_select ="";
 
 
     public function mount(Project $project)
@@ -38,6 +39,8 @@ class ContactManager extends Component
         ];
 
         $this->all_contact = $this->loadContacts();
+
+        $this->default_select = "";
 
     }
 

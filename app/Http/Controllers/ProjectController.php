@@ -81,8 +81,10 @@ class ProjectController extends Controller
         }
     }
         foreach ($request->contacts_name as $key => $name) {
+
             $contact = $project->contacts()->firstOrCreate([
-                'email' => $request->contacts_email[$key],
+                'email' => $request->contacts_email[$key]],
+                [
                 'name' => $name,
             ]);
         }
